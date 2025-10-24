@@ -1,0 +1,270 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red53\green134\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c100000;\cssrgb\c25490\c61176\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+<!DOCTYPE html>\
+<html lang="de">\
+<head>\
+\'a0 <meta charset="UTF-8" />\
+\'a0 <meta name="viewport" content="width=device-width, initial-scale=1.0" />\
+\'a0 <title>Luna Chatbot</title>\
+\'a0 <style>\
+\'a0 \'a0 * \{\
+\'a0 \'a0 \'a0 margin: 0;\
+\'a0 \'a0 \'a0 padding: 0;\
+\'a0 \'a0 \'a0 box-sizing: border-box;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 #luna-app-container \{\
+\'a0 \'a0 \'a0 position: fixed;\
+\'a0 \'a0 \'a0 top: 0;\
+\'a0 \'a0 \'a0 left: 0;\
+\'a0 \'a0 \'a0 width: 100%;\
+\'a0 \'a0 \'a0 height: 100%;\
+\'a0 \'a0 \'a0 background: #f0f0f0;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 justify-content: center;\
+\'a0 \'a0 \'a0 align-items: center;\
+\'a0 \'a0 \'a0 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;\
+\'a0 \'a0 \'a0 z-index: 10000;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-chat-container \{\
+\'a0 \'a0 \'a0 width: 100%;\
+\'a0 \'a0 \'a0 max-width: 500px;\
+\'a0 \'a0 \'a0 height: 100vh;\
+\'a0 \'a0 \'a0 max-height: 900px;\
+\'a0 \'a0 \'a0 background: white;\
+\'a0 \'a0 \'a0 border-radius: 20px;\
+\'a0 \'a0 \'a0 box-shadow: 0 4px 12px rgba(0,0,0,0.1);\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 flex-direction: column;\
+\'a0 \'a0 \'a0 overflow: hidden;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-header \{\
+\'a0 \'a0 \'a0 padding: 16px;\
+\'a0 \'a0 \'a0 border-bottom: 1px solid #e5e5e5;\
+\'a0 \'a0 \'a0 text-align: center;\
+\'a0 \'a0 \'a0 background: #f7f7f7;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-header h1 \{\
+\'a0 \'a0 \'a0 font-size: 1.1rem;\
+\'a0 \'a0 \'a0 font-weight: 600;\
+\'a0 \'a0 \'a0 color: #333;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-chat-box \{\
+\'a0 \'a0 \'a0 flex-grow: 1;\
+\'a0 \'a0 \'a0 padding: 16px;\
+\'a0 \'a0 \'a0 overflow-y: auto;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 flex-direction: column;\
+\'a0 \'a0 \'a0 gap: 12px;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-message \{\
+\'a0 \'a0 \'a0 max-width: 85%;\
+\'a0 \'a0 \'a0 padding: 12px 16px;\
+\'a0 \'a0 \'a0 border-radius: 18px;\
+\'a0 \'a0 \'a0 line-height: 1.4;\
+\'a0 \'a0 \'a0 font-size: 0.95rem;\
+\'a0 \'a0 \'a0 word-wrap: break-word;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-user-message \{\
+\'a0 \'a0 \'a0 background: #007aff;\
+\'a0 \'a0 \'a0 color: white;\
+\'a0 \'a0 \'a0 align-self: flex-end;\
+\'a0 \'a0 \'a0 border-bottom-right-radius: 4px;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-luna-message \{\
+\'a0 \'a0 \'a0 background: #e5e5ea;\
+\'a0 \'a0 \'a0 color: #333;\
+\'a0 \'a0 \'a0 align-self: flex-start;\
+\'a0 \'a0 \'a0 border-bottom-left-radius: 4px;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-typing \{\
+\'a0 \'a0 \'a0 background: #e5e5ea;\
+\'a0 \'a0 \'a0 color: #999;\
+\'a0 \'a0 \'a0 font-style: italic;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-input-form \{\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 padding: 12px;\
+\'a0 \'a0 \'a0 border-top: 1px solid #e5e5e5;\
+\'a0 \'a0 \'a0 background: #f7f7f7;\
+\'a0 \'a0 \'a0 gap: 8px;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-input-form input \{\
+\'a0 \'a0 \'a0 flex-grow: 1;\
+\'a0 \'a0 \'a0 border: 1px solid #dcdcdc;\
+\'a0 \'a0 \'a0 border-radius: 20px;\
+\'a0 \'a0 \'a0 padding: 10px 16px;\
+\'a0 \'a0 \'a0 font-size: 0.95rem;\
+\'a0 \'a0 \'a0 outline: none;\
+\'a0 \'a0 \'a0 font-family: inherit;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-input-form input:focus \{\
+\'a0 \'a0 \'a0 border-color: #007aff;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-input-form button \{\
+\'a0 \'a0 \'a0 background: none;\
+\'a0 \'a0 \'a0 border: none;\
+\'a0 \'a0 \'a0 cursor: pointer;\
+\'a0 \'a0 \'a0 padding: 8px 12px;\
+\'a0 \'a0 \'a0 color: #007aff;\
+\'a0 \'a0 \'a0 font-size: 1.2rem;\
+\'a0 \'a0 \'a0 display: flex;\
+\'a0 \'a0 \'a0 align-items: center;\
+\'a0 \'a0 \'a0 justify-content: center;\
+\'a0 \'a0 \}\
+\'a0 \'a0\'a0\
+\'a0 \'a0 .luna-input-form button:active \{\
+\'a0 \'a0 \'a0 opacity: 0.7;\
+\'a0 \'a0 \}\
+\'a0 </style>\
+</head>\
+<body>\
+\'a0 <script>\
+\'a0 \'a0 (function() \{\
+\'a0 \'a0 \'a0 // Erstelle den HTML-Container\
+\'a0 \'a0 \'a0 const container = document.createElement('div');\
+\'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://container.id/"}}{\fldrslt \cf3 \ul \ulc3 container.id}} = 'luna-app-container';\
+\'a0 \'a0 \'a0 container.innerHTML = `\
+\'a0 \'a0 \'a0 \'a0 <div class="luna-chat-container">\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="luna-header">\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 <h1>
+\f1 \uc0\u55356 \u57113 
+\f0  Plaudere mit Luna</h1>\
+\'a0 \'a0 \'a0 \'a0 \'a0 </div>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <div class="luna-chat-box" id="luna-chat-box"></div>\
+\'a0 \'a0 \'a0 \'a0 \'a0 <form class="luna-input-form" id="luna-chat-form">\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 <input\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 type="text"\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 id="luna-user-input"\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 placeholder="Schreibe eine Nachricht..."\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 \'a0 autocomplete="off"\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 >\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 <button type="submit" title="Senden">
+\f1 \uc0\u9992 \u65039 
+\f0 </button>\
+\'a0 \'a0 \'a0 \'a0 \'a0 </form>\
+\'a0 \'a0 \'a0 \'a0 </div>\
+\'a0 \'a0 \'a0 `;\
+\'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 document.body.appendChild(container);\
+\'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 setTimeout(() => \{\
+\'a0 \'a0 \'a0 \'a0 const chatBox = document.getElementById('luna-chat-box');\
+\'a0 \'a0 \'a0 \'a0 const chatForm = document.getElementById('luna-chat-form');\
+\'a0 \'a0 \'a0 \'a0 const userInput = document.getElementById('luna-user-input');\
+\'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 if (!chatBox || !chatForm || !userInput) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 console.error('Luna-Elemente nicht gefunden');\
+\'a0 \'a0 \'a0 \'a0 \'a0 return;\
+\'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 let chatHistory = JSON.parse(localStorage.getItem('luna-chat-history')) || [];\
+\'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 function addMessage(text, sender) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 const messageEl = document.createElement('div');\
+\'a0 \'a0 \'a0 \'a0 \'a0 messageEl.className = `luna-message luna-$\{sender\}-message`;\
+\'a0 \'a0 \'a0 \'a0 \'a0 messageEl.textContent = text;\
+\'a0 \'a0 \'a0 \'a0 \'a0 chatBox.appendChild(messageEl);\
+\'a0 \'a0 \'a0 \'a0 \'a0 chatBox.scrollTop = chatBox.scrollHeight;\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 chatHistory.push(\{ sender, text, timestamp: new Date().toISOString() \});\
+\'a0 \'a0 \'a0 \'a0 \'a0 localStorage.setItem('luna-chat-history', JSON.stringify(chatHistory));\
+\'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 addMessage('Hallo! Ich bin Luna. Ich freue mich, mit dir zu plaudern. Was m\'f6chtest du heute entdecken oder erfinden?', 'luna');\
+\'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 function getLunaResponse(userMessage) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 const msg = userMessage.toLowerCase();\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 const blockedWords = ['gewalt', 't\'f6ten', 'hass', 'b\'f6se'];\
+\'a0 \'a0 \'a0 \'a0 \'a0 if (blockedWords.some(word => msg.includes(word))) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 return 'Das ist ein Thema, \'fcber das ich nicht sprechen kann. Lass uns \'fcber etwas anderes plaudern! Was interessiert dich noch?';\
+\'a0 \'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 if (msg.includes('bruch')) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 return 'Klar, Bruchrechnung! Das ist ein super wichtiges Thema. Wo h\'e4ngst du denn fest? Beschreib mir die Aufgabe, und wir gehen sie zusammen Schritt f\'fcr Schritt durch!';\
+\'a0 \'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 if (msg.includes('hausaufgabe')) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 return 'Gerne helfe ich dir bei deinen Hausaufgaben! Welches Fach ist es denn? Und was ist die konkrete Aufgabe?';\
+\'a0 \'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 if (msg.includes('geschichte') || msg.includes('deutsch') || msg.includes('englisch')) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 return 'Das ist ein spannendes Thema! Erz\'e4hl mir mehr, und ich helfe dir gerne weiter.';\
+\'a0 \'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 if (msg.includes('wer bist du') || msg.includes('who are you')) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 return 'Hallo! Ich bin Luna, deine freundliche KI-Assistentin. Ich bin hier, um dir bei Fragen zu helfen, dich beim Lernen zu unterst\'fctzen und mit dir kreativ zu sein. Stell mir einfach eine Frage!';\
+\'a0 \'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 if (msg.includes('vulkan') || msg.includes('natur') || msg.includes('science')) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 return 'Wow, Naturwissenschaften sind spannend! Ich liebe solche Fragen. Was genau m\'f6chtest du \'fcber dieses Thema wissen?';\
+\'a0 \'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 if (msg.includes('danke') || msg.includes('thanks')) \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 return 'Sehr gerne! Das freut mich, dass ich dir helfen konnte. Hast du noch mehr Fragen?';\
+\'a0 \'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 const defaultResponses = [\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 'Das ist eine interessante Frage! Lass mich dar\'fcber nachdenken... Was genau m\'f6chtest du wissen?',\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 'Das ist spannend! Kannst du mir ein bisschen mehr dar\'fcber erz\'e4hlen?',\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 'Gute Frage! Lass uns das zusammen herausfinden. Was denkst du denn selbst?',\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 'Das klingt interessant! Ich helfe dir gerne weiter. Sag mir mehr!',\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 'Hmm, das ist ein guter Punkt. Lass uns das Schritt f\'fcr Schritt durchgehen.'\
+\'a0 \'a0 \'a0 \'a0 \'a0 ];\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];\
+\'a0 \'a0 \'a0 \'a0 \}\
+\'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 chatForm.addEventListener('submit', (e) => \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 e.preventDefault();\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 const userMessage = userInput.value.trim();\
+\'a0 \'a0 \'a0 \'a0 \'a0 if (!userMessage) return;\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 addMessage(userMessage, 'user');\
+\'a0 \'a0 \'a0 \'a0 \'a0 userInput.value = '';\
+\'a0 \'a0 \'a0 \'a0 \'a0 userInput.focus();\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 const typingEl = document.createElement('div');\
+\'a0 \'a0 \'a0 \'a0 \'a0 typingEl.className = 'luna-message luna-luna-message luna-typing';\
+\'a0 \'a0 \'a0 \'a0 \'a0 {\field{\*\fldinst{HYPERLINK "http://typingel.id/"}}{\fldrslt \cf3 \ul \ulc3 typingEl.id}} = 'luna-typing';\
+\'a0 \'a0 \'a0 \'a0 \'a0 typingEl.textContent = 'Luna schreibt...';\
+\'a0 \'a0 \'a0 \'a0 \'a0 chatBox.appendChild(typingEl);\
+\'a0 \'a0 \'a0 \'a0 \'a0 chatBox.scrollTop = chatBox.scrollHeight;\
+\'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 setTimeout(() => \{\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 const typing = document.getElementById('luna-typing');\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 if (typing) typing.remove();\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 const response = getLunaResponse(userMessage);\
+\'a0 \'a0 \'a0 \'a0 \'a0 \'a0 addMessage(response, 'luna');\
+\'a0 \'a0 \'a0 \'a0 \'a0 \}, 800 + Math.random() * 1200);\
+\'a0 \'a0 \'a0 \'a0 \});\
+\'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \'a0 userInput.focus();\
+\'a0 \'a0 \'a0 \'a0\'a0\
+\'a0 \'a0 \'a0 \}, 100);\
+\'a0 \'a0 \})();\
+\'a0 </script>\
+</body>\
+</html>}
